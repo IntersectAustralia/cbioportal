@@ -77,6 +77,12 @@
     regexp='^db.password=somepassword$'
     line='db.password={{ cbioportal_database.password }}'
 
+- name: Update the portal properties with the new documentation base url
+  lineinfile: >
+    dest={{ cbioportal_root }}/src/main/resources/portal.properties
+    regexp='skin.documentation.baseurl=https://github.com/cBioPortal/cbioportal/wiki/'
+    line='skin.documentation.baseurl=https://raw.githubusercontent.com/cBioPortal/cbioportal/master/docs/'
+
 - name: Update the portal properties with the internal pathology report root directory
   lineinfile: > 
     dest={{ cbioportal_root }}/src/main/resources/portal.properties
